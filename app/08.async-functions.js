@@ -9,6 +9,20 @@ console.log('Topic: Async Functions');
 //     Display the result of function in the console.
 //     Process a promise and display value in the console.
 
+// f1(1,3).then(data => console.log(data));
+// f2(1,3).then(data => console.log(data));
+//
+// function f2(a, b) {
+//     return new Promise((res, rej) => {
+//         res(a+b);
+//     })
+// }
+//
+// async function f1(a, b) {
+//     return await a + b;
+// }
+
+
 // Task 02
 // RU: Создайте асинхронную функцию f2, используя FDE (Function Definition Expression).
 //     Функция должна возвращать 'Promise Data', используя Promise.resolve()
@@ -18,6 +32,10 @@ console.log('Topic: Async Functions');
 //     The function should return the string 'Promise data' using Promise.resolve() method.
 //     Display the result of function in the console.
 //     Process a promise and display value in the console.
+// f2().then(data => console.log(data));
+// function f2(a = 0, b = 0) {
+//     return Promise.resolve(a + b);
+// }
 
 // Task 03
 // RU: Создайте класс C1. Добавьте асинхронный метод f3.
@@ -28,6 +46,16 @@ console.log('Topic: Async Functions');
 //     Method should throw an exception 'Error occurs in f3 method'.
 //     Create an instance of the class and call the method f3.
 //     Process a promise and display value in the console.
+
+class C1 {
+    async f3 () {
+        throw new Error('Error occurs in f3 method');
+    }
+}
+
+const c1 = new C1();
+
+c1.f3().catch(e => console.warn(e.message));
 
 // Task 04
 // RU: Cоздайте функцию makeRequest, используя FDS (Function Declaration Statement).

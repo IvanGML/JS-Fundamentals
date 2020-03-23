@@ -13,11 +13,10 @@
 3. Functions
 
 # Modern JavaScript: 
-1. Strings, Template Literals and Tagged Templates
-2. Promises
-3. Async Functions
+1. Strings, Template Literals and Tagged Templates,
+2. Promises, 
+3. Async Functions, 
 4. Iterators
-5. Sync Generators
 
 ## Requirements
 

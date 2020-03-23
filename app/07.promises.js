@@ -2,18 +2,22 @@ console.log('Topic: Promises');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
-
+// console.log(new Promise((res, rej) => {
+//     console.log('Promise is created');
+// }));
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+// Promise.resolve('Promise Data').then( data => console.log(data));
 
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+// Promise.reject('Promise Error').catch(e => console.log(e));
 
 
 // Task 04
@@ -21,6 +25,8 @@ console.log('Topic: Promises');
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+const PD = (data) => new Promise((res, rej) => setTimeout(() => res(data), 1000));
+PD('d').then(d => console.log(d));
 
 
 // Task 05

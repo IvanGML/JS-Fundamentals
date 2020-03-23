@@ -13,10 +13,19 @@ console.log('Topic: Iterators');
 //   orange: '#f50',
 //   pink: '#e07'
 // };
-
+//
 // const itColors = keyValueIterable(colors);
 // for (const [, color] of itColors) {
 //   console.log(color);
+// }
+//
+// function keyValueIterable(obj) {
+//     let result = [];
+//     for(let i in obj) {
+//         result.push([i, obj[i]]);
+//     }
+//     return result;
+//     // return Object.entries(obj);
 // }
 
 
@@ -28,15 +37,18 @@ console.log('Topic: Iterators');
 //     The boolean flag indicates whether a user is an administrator of the group.
 //     Сreatereate an iterator that returns only the administrators' names.
 
-// const users = {
-//   anna: false,
-//   boris: true, // admin
-//   christina: false,
-//   dave: false,
-//   elena: false,
-//   felix: true,  // admin
-// };
-// [...users].forEach(name => console.log(name)); // boris, felix 
+/*const users = {
+  anna: false,
+  boris: true, // admin
+  christina: false,
+  dave: false,
+  elena: false,
+  felix: true,  // admin
+};
+Object.entries(users).forEach(([name, value]) => value ? console.log(name) : null); // boris, felix
+for(let [name, isAdmin] of Object.entries(users)) {
+    if (isAdmin) console.log(name);
+}*/
 
 
 // Task 3
@@ -45,6 +57,37 @@ console.log('Topic: Iterators');
 // EN: Create a function take(sequence, amount), which returns a specified amount of numbers
 //     from iterable object random
 
+
+// const take = (sequence, amount) => {
+//     let loopThrough = sequence(amount);
+//     for (let i of loopThrough) {
+//         console.log(i, loopThrough);
+//     }
+// };
+//
+// take(doIt, 15);
+// //
+// function *doIt(sequence, stop){
+//     var counter = 0;
+//     while (true){
+//         console.log(sequence);
+//         yield sequence[Symbol.iterator]().next().value;
+//         counter += 1;
+//         if (counter === stop) break;
+//     }
+// }
+
+// const take = (sequence, amount) => {
+//     let results = [];
+//     let loop = 0;
+//     for ( let a of sequence) {
+//         results.push(a);
+//         loop++;
+//         if (loop === amount) break;
+//     }
+//     return results;
+// };
+//
 // const random = {
 //   [Symbol.iterator]: () => ({
 //     next: () => ({
@@ -52,9 +95,36 @@ console.log('Topic: Iterators');
 //     })
 //   })
 // };
-
-// const a = [...take(random, 3)];
+//
+//
+// const a = [...take(random,3)];
 // console.log(a);
+
+// const range = {
+//     from: 15,
+//     to: 32,
+//     [Symbol.iterator]() {
+//         return ({
+//             from: this.from,
+//             to: this.to,
+//             next() {
+//                 if(this.from < this.to) {
+//                     return {
+//                         value: this.from++,
+//                         done: false
+//                     }
+//                 }
+//                 return {
+//                     value: undefined,
+//                     done: true
+//                 }
+//             }
+//         })
+//     }
+// };
+//
+// for (let a of range) console.log(a);
+// console.dir(range);
 
 
 // Task 4
@@ -63,9 +133,26 @@ console.log('Topic: Iterators');
 // EN: Create iterable iterator, which produces Fibonacci numbers
 //     Implement method return, which allows you to stop iterator using for-of + break
 
+// const Fib = {
+//     [Symbol.iterator]() {
+//         return ({
+//             prev: 0,
+//             nextNumb: 1,
+//             next() {
+//                 this.nextNumb = this.prev + this.nextNumb;
+//                 this.prev = this.nextNumb - this.prev;
+//                 return ({
+//                     value: this.prev,
+//                     done: false
+//                 })
+//             }
+//         })
+//     }
+// };
+//
 // for (let v of Fib) {
-//   console.log(v);
-//   if (v > 50) break;
+//     console.log(v);
+//     if (v > 999950) break;
 // }
 
 
@@ -77,3 +164,5 @@ console.log('Topic: Iterators');
 
 // console.log([...-5]);
 // console.log([...5]);
+
+

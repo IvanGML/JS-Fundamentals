@@ -4,39 +4,76 @@ console.log('Topic: Primitive Data Types');
 // Объявите переменную days и проинициализируйте ее числом от 1 до 10.
 // Преобразуйте это число в количество секунд и выведите в консоль.
 
-
+// let days = 10;
+// console.log(`${days * 1000} милисекунд в ${days} секундах.`);
 
 // Task 02
 // Объявите две переменные: admin и name. Установите значение переменной name
 // в ваше имя. Скопируйте это значение в переменную admin и выведите его в консоль.
 
-
+// let admin, name;
+//
+// name = 'Vano';
+//
+// admin = name;
+//
+// console.log(admin);
 
 // Task 03
 // Объявите три переменных: a, b, c. Присвойте им следующие значения: 10, 2, 5.
 // Объявите переменную result1 и вычислите сумму значений переменных a, b, c.
 // Объявите переменную min и вычислите минимальное значение переменных a, b, c.
 // Выведите результат в консоль.
-
-
+// let a = 10, b = 2, c = 5;
+// const result = a + b + c;
+// console.log(result);
+// console.log(Math.min(a, b, c));
 
 // Task 04
 // Объявите три переменных: hour, minute, second. Присвойте им следующие значения:
 // 10, 40, 25. Выведите в консоль время в формате 10:40:25.
-
-
+// let hour = 10, minute = 40, second = 25;
+// const date = new Date(2020, 2, 11, hour, minute, second);
+// console.log(date.toString().split(' ')[4]);
 
 // Task 05
 // Объявите переменную minute и проинициализируйте ее целым числом.
 // Вычислите к какой четверти принадлежит это число и выведите в консоль.
-
-
+// let minute = 15;
+// function definePartOfHour(m) {
+//     if(typeof m !== 'number' || !isFinite(m) || m < 0) {
+//         return 'please, input valid number.';
+//     }
+//     const hour = 60;
+//     if(hour <= m) {
+//         while (m >= hour) {
+//             m = m - hour;
+//         }
+//     }
+//     const percentage = Math.floor((m/hour) * 100);
+//     if(percentage < 25 ) return 'first part of hour';
+//     if(percentage < 30) return 'second part of hour';
+//     if(percentage < 45) return 'third part of hour';
+//     return 'last part of hour';
+// }
+//
+// console.log(definePartOfHour(320));
+// console.log(definePartOfHour(15));
+// console.log(definePartOfHour(0));
+// console.log(definePartOfHour(60));
+// console.log(definePartOfHour('60'));
+// console.log(definePartOfHour(false));
+// console.log(definePartOfHour(null));
+// console.log(definePartOfHour(NaN));
 
 // Task 06
 // Объявите две переменные, которые содержат стоимость товаров:
 // первый товар - 0.10 USD, второй - 0.20 USD
 // Вычислите сумму и выведите в консоль. Используйте toFixed()
-
+// const good1 = '0.10 USD';
+// const good2 = '0.20 USD';
+// const sum = +(parseFloat(good1) + parseFloat(good2)).toFixed(1);
+// console.log(sum);
 
 
 // Task 07
@@ -44,31 +81,21 @@ console.log('Topic: Primitive Data Types');
 // Если значение переменной равно 0, выведите в консоль "True", иначе "False".
 // Проверьте, что будет появляться в консоли для значений 1, 0, -3.
 
-
-
 // Task 08
 // Объявите две переменных: a, b. Вычислите их сумму и присвойте переменной result.
 // Если результат больше 5, выведите его в консоль, иначе умножте его на 10
 // и выведите в консоль.
 // Данные для тестирования: 2, 5 и 3, 1.
 
-
-
 // Task 09
 // Объявите переменную month и проинициализируйте ее числом от 1 до 12.
 // Вычислите время года и выведите его в консоль.
 
-
-
 // Task 10
 // Выведите в консоль все числа от 1 до 10.
 
-
-
 // Task 11
 // Выведите в консоль все четные числа от 1 до 15.
-
-
 
 // Task 12
 // Нарисуйте в консоле пирамиду на 10 уровней как показано ниже
@@ -78,8 +105,6 @@ console.log('Topic: Primitive Data Types');
 // xxxx
 // ...
 
-
-
 // Task 13
 // Нарисуйте в консоле пирамиду на 9 уровней как показано ниже
 // 1
@@ -88,12 +113,8 @@ console.log('Topic: Primitive Data Types');
 // 4444
 // ...
 
-
-
 // Task 14
 // Запросите у пользователя какое либо значение и выведите его в консоль.
-
-
 
 // Task 15
 // Перепишите if используя тернарный опертор
@@ -102,8 +123,6 @@ console.log('Topic: Primitive Data Types');
 // } else {
 //   result = 'Много';
 // }
-
-
 
 // Task 16
 // Перепишите if..else используя несколько тернарных операторов.
@@ -118,14 +137,11 @@ console.log('Topic: Primitive Data Types');
 //   message = '';
 // }
 
-
-
 // Task 17
 // Замените for на while без изменения поведения цикла
 // for (var i = 0; i < 3; i++) {
 //   alert( "номер " + i + "!" );
 // }
-
 
 // Task 18
 // Напишите цикл, который предлагает prompt ввести число, большее 100.
@@ -133,8 +149,6 @@ console.log('Topic: Primitive Data Types');
 // Цикл должен спрашивать число пока либо посетитель не введёт число,
 // большее 100, либо не нажмёт кнопку Cancel (ESC).
 // Предусматривать обработку нечисловых строк в этой задаче необязательно.
-
-
 
 // Task 19
 // Переписать следующий код используя switch
@@ -149,7 +163,6 @@ console.log('Topic: Primitive Data Types');
 //   alert( '2,3' );
 // }
 
-
 // Task 20
 // Объявите переменную и проинициализируйте ее строчным значением в переменном
 // регистре. (Например так "таООооОддОО")
@@ -158,14 +171,10 @@ console.log('Topic: Primitive Data Types');
 // Выведите результат работы в консоль
 // Используйте: toUpperCase/toLowerCase, slice.
 
-
-
 // Task 21
 // Напишите код, который выводит в консоль true, если строка str содержит
 // „viagra“ или „XXX“, а иначе false.
 // Тестовые данные: 'buy ViAgRA now', 'free xxxxx'
-
-
 
 // Task 22
 // Напишите код, который проверяет длину строки str, и если она превосходит
@@ -176,13 +185,8 @@ console.log('Topic: Primitive Data Types');
 //  "Вот, что мне хотелось бы сказать на эту тему:", 20
 //  "Всем привет!", 20
 
-
-
 // Task 23
 // Напишите код, который из строки $100 получит число и выведите его в консоль.
 
-
 // Task 24
 // Напишите код, который проверит, является ли переменная промисом
-
-

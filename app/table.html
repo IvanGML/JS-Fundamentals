@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td id="elem">2</td>
+            <td>3</td>
+            <td>Age</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>age</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+    <form name='search'>
+        <input type="text" value="" placeholder="type here">
+    </form>
+    <ul class="searchable">
+        <li>1</li>
+        <li>2</li>
+        <li>Hello</li>
+    </ul>
+    <div id="root">
+        <ul class="searchable">
+            <li>1</li>
+            <li>2</li>
+            <li>Hello</li>
+        </ul>
+    </div>
+    <a href="#hash" id="link">link to #hash</a>
+    <div data-widget-name="menu">Choose the genre</div>
+    <a name="list">the list</a>
+    <ul id="repaintTask">
+        <li><a href="http://google.com">http://google.com</a></li>
+        <li><a href="/tutorial">/tutorial.html</a></li>
+        <li><a href="local/path">local/path</a></li>
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+        <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+    </ul>
+
+    <h2>Arbitrary list</h2>
+    <ul id="modificatedList"></ul>
+    <button id="addToListButton">add points to list</button> -->
+
+    <h2>List from object tree</h2>
+    <div id="objectTree"></div>
+    Счётчик: <input type="button" value="1" data-counter>
+    Ещё счётчик: <input type="button" value="2" data-counter>
+    
+    <script>
+      document.addEventListener('click', function(event) {
+      debugger;
+        if (event.target.dataset.counter != undefined) { // если есть атрибут...
+          event.target.value++;
+        }
+    
+      });
+    </script>
+    <script>
+        createListItem = (data) => {
+            const elem = document.createElement('li');
+            elem.innerText = data;
+            const deleteButton = document.createElement('button');
+            deleteButton.innerText = 'X';
+            deleteButton.addEventListener('click', () => deleteButton.parentElement.remove());
+            elem.append(deleteButton);
+            return elem;
+        }
+        
+        const addToList = (list) => {
+            const itemData = prompt('Please, write info about next point.', '');
+            if (itemData) {
+                const elem = createListItem(itemData);
+                list.append(elem);
+                setTimeout(() => {
+                    addToList(list);
+                }, 0);
+            }
+        }
+
+        const createTree = (data, root) => {
+            const newUl = document.createElement('ul');
+            for (const point in data) {
+                const amountOfChildren = Object.keys(data[point]).length;
+                textForItem = amountOfChildren ? `${point}. amount of children: ${amountOfChildren}` : point;
+                const listItem = createListItem(textForItem);
+                newUl.append(listItem);
+                if(amountOfChildren) {
+                    createTree(data[point], listItem)
+                }
+            }
+            root.append(newUl);
+        }
+
+        var data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+
+            "Деревья": {
+                "Огромные": {
+                "секвойя": {},
+                "дуб": {}
+                },
+                "Цветковые": {
+                "яблоня": {},
+                "магнолия": {}
+                }
+            }
+        };
+
+        const objectTree = document.getElementById('objectTree');
+        const listFromObjectButton = document.getElementById('listFromObjectButton');
+        createTree(data, objectTree);
+
+
+        // const listFromObjectButton = document.getElementById('listFromObjectButton');
+
+        // const modificatedList = document.getElementById('modificatedList');
+        // const addToListButton = document.getElementById('addToListButton');
+        // const addToModificatiedList = () => addToList(modificatedList);
+        // addToListButton.addEventListener('click', addToModificatiedList);
+
+        // const repaintTask = document.getElementById('repaintTask');
+        // [...repaintTask.children].forEach(item => {
+        //     const targetItem = item.firstElementChild;
+        //     if(targetItem.getAttribute('href').includes('//')) targetItem.style.color = 'orange';
+        // })
+
+        // const table = document.body.firstElementChild; 
+        // [...table.rows].forEach((item, index) => {
+        //     Array.from(item.cells).forEach(item => {
+        //         if(item.cellIndex === index) item.style.background = 'red';
+        //     })
+        // })
+        // const age = [...document.getElementsByTagName('td')].filter(item => item.innerText.toLowerCase().includes('age'));
+        // // console.log('age', age);
+        // const formWithNameSearch = document.getElementsByName('search')[0];
+        // const formWithNameSearch2 = document.querySelectorAll('form')[0].matches('form[name$="search"]');
+        // // console.log(formWithNameSearch2);
+        // const root = document.getElementById('root');
+        // const fromRoot = root.querySelectorAll('.searchable');
+        // const fromDoc = document.querySelectorAll('.searchable');
+        // // console.log('fromRoot', fromRoot);
+        // // console.log('fromDoc', fromDoc);
+        // const link = document.getElementById('link');
+        // // console.dir(link);
+        // const div = document.querySelector('div[data-widget-name]');
+        // // console.log(div.dataset.widgetName);
+    </script>
+</body>
+</html>
